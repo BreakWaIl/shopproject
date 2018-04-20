@@ -1,0 +1,81 @@
+<extend name="Public/base" />
+<block name="body">
+<div class="list-div" id="listDiv">
+    <table cellpadding="3" cellspacing="1">
+        <tr>
+            <th width="10%">
+                <input type="button" id="selectAll" value="全选">
+                <input type="button" id="selectOther" value="反选">
+                <input type="button" id="dels" value="删除">
+            </th>
+            <th>类型名称</th>
+            <th>操作</th>
+        </tr>
+        <volist name="data.list" id="vo">
+        <tr>
+            <td align="center"><input type="checkbox" name="ids" value="{$vo.id}"></td>
+            <td align="center" class="first-cell">{$vo.type_name}</td>
+            
+            <td align="center">
+            <a href="{:U('edit','type_id='.$vo['id'])}" title="编辑"><img src="__ADMIN__/Images/icon_edit.gif" width="16" height="16" border="0" /></a>
+            <a href="{:U('dels','type_id='.$vo['id'])}" title="回收站"><img src="__ADMIN__/Images/icon_trash.gif" width="16" height="16" border="0" /></a></td>
+        </tr>
+        </volist>
+    </table>
+    <!-- 分页开始 -->
+    <table id="page-table" cellspacing="0">
+        <tr>
+            <td width="80%">&nbsp;</td>
+            <td align="center" nowrap="true"> 
+                {$data.pageStr}
+            </td>
+        </tr>
+    </table>
+<!-- 分页结束 -->
+</div>
+</block>
+
+<block name="js">
+    <script type="text/javascript">
+        // 实现全选
+        $('#selectAll').click(function(){
+            $('input[name="ids"]').prop('checked',true);
+        });
+
+        // 实现反选
+        $('#selectOther').click(function(){
+            $('input[name="ids"]').each(function(){
+                var value = $(this).prop('checked');
+                if(value){
+                    $(this).prop('checked',false);
+                }else{
+                    $(this).prop('checked',true)
+                }
+            });
+        });
+
+        // 删除触发ajax
+        $('#dels').click(function(){
+            // 获取到目前已经被选中的值
+            var ids = []; 
+            $('input[name="ids"]').each(function(){
+                var value = $(this).prop('checked');
+                if(value){
+                    ids.push($(this).val());
+                }
+            });
+            if(ids.length<=0){
+                return;
+            }
+            $.ajax({
+                url:'{:U("dels")}',
+                data:{type_id:ids},
+                type:'post',
+                success:function(res){
+                    location.href='{:U("index")}';
+                }
+            });
+        });
+    </script>
+
+</block>

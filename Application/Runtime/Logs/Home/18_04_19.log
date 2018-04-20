@@ -1,0 +1,59 @@
+[ 2018-04-19T22:28:43+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000781s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001633s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001826s ]
+SQL: SHOW COLUMNS FROM `shop_category` [ RunTime:0.0151s ]
+SQL: SELECT * FROM `shop_goods` WHERE `is_new` = 1 ORDER BY id desc LIMIT 5   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `shop_goods` WHERE `is_rec` = 1 ORDER BY id desc LIMIT 5   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `shop_goods` WHERE `is_hot` = 1 ORDER BY id desc LIMIT 5   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002861s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002993s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.210299s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.210435s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002499s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002652s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005736s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005858s ]
+
+[ 2018-04-19T22:28:46+08:00 ] 127.0.0.1 /Uploads/2017-12-10/thumb_5a2cd2d02b3cf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000623s ]
+
+[ 2018-04-19T22:28:47+08:00 ] 127.0.0.1 /Uploads/2017-12-10/thumb_5a2cc9972d17d.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000492s ]
+
+[ 2018-04-19T22:28:47+08:00 ] 127.0.0.1 /Uploads/2017-12-07/thumb_5a2917bd03fe9.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000515s ]
+
+[ 2018-04-19T22:28:47+08:00 ] 127.0.0.1 /Uploads/2017-12-04/thumb_5a24f8d2c4b86.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000648s ]
+
+[ 2018-04-19T22:28:48+08:00 ] 127.0.0.1 /Uploads/2017-12-07/thumb_5a2917f6286dc.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000834s ]
+
+[ 2018-04-19T22:29:30+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000523s ]
+
+[ 2018-04-19T22:29:35+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000810s ]
+

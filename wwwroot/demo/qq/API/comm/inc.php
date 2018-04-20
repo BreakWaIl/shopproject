@@ -1,0 +1,2 @@
+<?php die('forbidden'); ?>
+{"appid":"101425482","appkey":"cc79b2a261e45644e920616958e0ef2c","callback":"http://shop.com/demo/example/oauth/callback.php","scope":"get_user_info","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}

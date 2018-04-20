@@ -1,0 +1,216 @@
+<extend name="Public/base" />
+<block name="body" >
+<div class="tab-div">
+    <div id="tabbar-div">
+        <p>
+            <span class="tab-front">通用信息</span>
+            <span class="tab-front">详细信息</span>
+            <span class="tab-front">商品属性</span>
+        </p>
+    </div>
+    <div id="tabbody-div">
+        <form enctype="multipart/form-data" action="" method="post">
+            <table width="90%" class="table" align="center">
+                <tr>
+                    <td class="label">商品名称：</td>
+                    <td><input type="text" name="goods_name" value="{$info.goods_name}"/>
+                    <span class="require-field">*</span></td>
+                </tr>
+                <tr>
+                    <td class="label">商品货号： </td>
+                    <td>
+                        <input type="text" name="goods_sn" value="{$info.goods_sn}" />
+                        <span id="goods_sn_notice"></span><br />
+                        <span class="notice-span"id="noticeGoodsSN">如果您不输入商品货号，系统将自动生成一个唯一的货号。</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">商品数量： </td>
+                    <td>
+                        <input type="text" name="goods_number" value="{$info.goods_number}" />
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">商品分类：</td>
+                    <td>
+                        <select name="cate_id">
+                            <volist name="tree" id="vo">
+                                <option value="{$vo.id}" <eq name="info.cate_id" value="$vo.id">selected="selected"</eq>>{$vo.lev|str_repeat='&nbsp;',###}{$vo.cname}</option>
+                            </volist>
+                        </select>
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">本店售价：</td>
+                    <td>
+                        <input type="text" name="shop_price" value="{$info.shop_price}" />
+                        <span class="require-field">*</span>
+                    </td>
+                </tr>
+        
+                <tr>
+                    <td class="label">加入推荐：</td>
+                    <td>
+                        <input type="checkbox" name="is_hot" value="1" <eq name="info.is_hot" value="1">checked="checked"</eq> /> 热卖 
+                        <input type="checkbox" name="is_new" value="1" <eq name="info.is_new" value="1">checked="checked"</eq> /> 新品 
+                        <input type="checkbox" name="is_rec" value="1" <eq name="info.is_rec" value="1">checked="checked"</eq>/> 推荐
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">市场售价：</td>
+                    <td>
+                        <input type="text" name="market_price" value="{$info.market_price}"  />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">商品图片：</td>
+                    <td>
+                        <input type="hidden" id="goods_img" name="goods_img"  value="{$info.goods_img}" />
+                        <input type="hidden" name="goods_thumb" id="goods_thumb" value="{$info.goods_thumb}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">&nbsp;</td>
+                    <td>
+                        <!-- 当图片上传完之后显示图片 -->
+                        <img src="/{$info.goods_img}" width="100" height="100" class="goods_img">
+                    </td>
+                </tr>
+            </table>
+            
+            <table width="90%" class="table" align="center" style="display: none" >
+                <tr>
+                    <td class="label" width="10%">商品详情：</td>
+                    <td>
+                        <!-- 加载编辑器的容器 -->
+                        <script id="container" name="goods_body" type="text/plain" style="width: 90%;height: 300px;">{$info.goods_body}</script>
+                        <!-- 配置文件 -->
+                        <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+                        <!-- 编辑器源码文件 -->
+                        <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+                        <!-- 实例化编辑器 -->
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('container');
+                        </script>
+                    </td>
+                </tr>
+            </table>
+            <table width="90%" class="table" align="center" style="display: none" >
+                <tr>
+                    <td class="label" width="10%">选项类型：</td>
+                    <td>
+                        <select name="type_id" id="type_id">
+                            <option>请选择类型</option>
+                            <volist name="type" id="vo">
+                                <option value="{$vo.id}" <eq name="info.type_id" value="$vo.id">selected="selected"</eq> >{$vo.type_name}</option>
+                            </volist>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="showAttr">
+                        <table width="90%" align="center" >
+                            <volist name="attr" id="vo" key="index">
+                            <tr>
+                                <td class="label" width="10%"><eq name="vo.attr_type" value="2"><a href="javascript:;" onclick="clonethis(this)">[<eq name="index" value="1">+<else />-</eq>]</a></eq>{$index}{$vo.attr_name}：</td>
+                                <td>
+                                <eq name="vo.attr_input_type" value="1" >
+                                    <input type="text" name="attr[{$vo.attr_id}][]" value="{$vo.attr_value}">
+                                <else />
+                                    <select name="attr[{$vo.attr_id}][]" id="type_id">
+                                        <volist name='vo.attr_values' id='v' key="index2">
+                                        <option <eq name="vo.attr_value" value="$v">selected="selected"</eq>>{$v}</option>
+                                        </volist>
+                                    </select>
+                                </eq>
+                                    
+                                </td>
+                            </tr>
+                            </volist>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" name="goods_id" value="{$info.id}" />
+            <div class="button-div">
+                <input type="submit" value=" 确定 " class="button"/>
+                <input type="reset" value=" 重置 " class="button" />
+            </div>
+        </form>
+    </div>
+</div>
+</block>
+<block name="js">
+    <script type="text/javascript" src="__PUBLIC__/layui/layui.js"></script>
+    <script type="text/javascript">
+        // 文件异步上传
+        layui.use('upload', function(){
+            var upload = layui.upload;   
+            //执行实例
+            var uploadInst = upload.render({
+                elem: '#goods_img',//绑定的元素 
+                url: '{:U("upload")}', //上传接口
+                done: function(res){
+                    // 文件上传成功处理
+                    if(res.status==1){
+                        //显示上传的图片
+                        $('.goods_img').attr('src','/'+res.goods_img);
+                        // 处理表单提交的商品图片及缩略图
+                        $('#goods_img').val(res.goods_img);
+                        $('#goods_thumb').val(res.goods_thumb);
+                    }else{
+                        layer.alert(res.msg);
+                    }            
+                }
+    
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        // 实现选项卡的切换效果
+        $('#tabbar-div p span').click(function(){
+            // 将所有的table隐藏
+            $('.table').hide();
+            // 将当前点击对应的table显示
+            // 当前点击的span的索引
+            var i = $(this).index();
+            // 根据索引找到对应的table显示
+            $('.table').eq(i).show();
+        });
+        // 类型切换获取属性信息
+        $('#type_id').change(function(){
+            //获取当前选中的类型的id
+            var type_id = $(this).val();
+            $.ajax({
+                url:'{:U("showAttr")}',
+                data:{type_id:type_id},
+                type:'post',
+                success:function(res){
+                    // 处理成功之后将结果以html格式的字符串进行返回
+                    // 此格式最为方便。
+                    $('#showAttr').html(res);
+                }
+            });
+        });
+        // 实现自身的复制或者删除功能
+        function clonethis(obj){
+            // 获取点击的完整tr对象
+            var current = $(obj).parent().parent();
+            if($(obj).html()=='[+]'){
+                // 复制并且追加
+                var newtr = current.clone(true);
+                // 将新的符号修改为[-]
+                newtr.find('a').html('[-]');
+                current.after(newtr);
+            }else{
+                // 删除当前点击的
+                current.remove();
+            }
+        }
+    </script>
+</block>

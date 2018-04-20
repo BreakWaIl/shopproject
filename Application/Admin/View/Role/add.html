@@ -1,0 +1,17 @@
+<extend name="Public/base" />
+<block name="body">
+    <form action="__SELF__" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">角色名称:</td>
+                <td>
+                    <input type='text' name='role_name' value="" />
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</block>

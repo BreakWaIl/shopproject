@@ -1,0 +1,40 @@
+<extend name="Public/base" />
+<block name="body">
+<div class="list-div" id="listDiv">
+    <table cellpadding="3" cellspacing="1">
+        <tr>
+            <th width="10%">序号</th>
+            <th>角色名称</th>
+            <th>操作</th>
+        </tr>
+        <volist name="data.list" id="vo">
+        <tr>
+            <td align="center">{$vo.id}</td>
+            <td align="center" class="first-cell">{$vo.role_name}</td>
+            <td align="center">
+            <gt name="vo.id" value="1">
+            <a href="{:U('disfetch','role_id='.$vo['id'])}" title="分配权限"><img src="__ADMIN__/Images/icon_copy.gif" width="16" height="16" border="0" /></a>
+            <a href="{:U('edit','role_id='.$vo['id'])}" title="编辑"><img src="__ADMIN__/Images/icon_edit.gif" width="16" height="16" border="0" /></a>
+            <a href="{:U('dels','role_id='.$vo['id'])}" title="回收站"><img src="__ADMIN__/Images/icon_trash.gif" width="16" height="16" border="0" /></a>
+            </gt>
+            </td>
+        </tr>
+        </volist>
+    </table>
+    <!-- 分页开始 -->
+    <table id="page-table" cellspacing="0">
+        <tr>
+            <td width="80%">&nbsp;</td>
+            <td align="center" nowrap="true"> 
+                {$data.pageStr}
+            </td>
+        </tr>
+    </table>
+<!-- 分页结束 -->
+</div>
+</block>
+
+<block name="js">
+
+
+</block>

@@ -1,0 +1,45 @@
+request body = <TemplateSMS>
+                    <to>18520409113</to> 
+                    <appId>8a216da86010e6900160344703890fd2</appId>
+                    <templateId></templateId>
+                    <datas><data>123445</data><data>30</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8aaf0708594f1f0201595d46aee102b0/SMS/TemplateSMS?sig=3B7D2550B618277BF707F99B9018E9DE
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>112307</statusCode>
+    <statusMsg>【短信】模板短信模板ID为空</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>18520409113</to> 
+                    <appId>8a216da86010e6900160344703890fd2</appId>
+                    <templateId>1</templateId>
+                    <datas><data>123445</data><data>30</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8aaf0708594f1f0201595d46aee102b0/SMS/TemplateSMS?sig=91EBCCCF8BD916D569A9DC7EFC12A3A9
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>631d2741b9d94b1d9b3e30695c8ff542</smsMessageSid>
+        <dateCreated>20171208151256</dateCreated>
+    </TemplateSMS>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>18520409113</to> 
+                    <appId>8a216da86010e6900160344703890fd2</appId>
+                    <templateId>1</templateId>
+                    <datas><data>2449</data><data>1800</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8aaf0708594f1f0201595d46aee102b0/SMS/TemplateSMS?sig=6402FE3AC26E40078841351AC9D20A39
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>6fc6fe41985341e2b5ccdc20a678f76e</smsMessageSid>
+        <dateCreated>20171208152711</dateCreated>
+    </TemplateSMS>
+</Response>
+
